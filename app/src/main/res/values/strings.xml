@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">SignIn_SignUp</string>
+    <string name="date">Birth date(dd/mm/yy)</string>
+    <string name="phone">Telephone number</string>
+    <string name="emailAddress">Email Address</string>
+    <string name="password">Password</string>
+    <string name="email">Email Address</string>
+    <string name="go_main_page_1">Main page</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="name">Name</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="si_password">Password</string>
+    <string name="let_s_get_started">Let\'s get started!</string>
+    <string name="sign_in">SIGN IN</string>
+    <string name="main_sign_in">Sign In</string>
+    <string name="main_sign_up">Sign Up</string>
+    <string name="si_name">Name</string>
+    <string name="si_email">Email address</string>
+    <string name="back_main_page">Main page</string>
+    <string name="title_activity_sign_in">SignIn</string>
+</resources>
