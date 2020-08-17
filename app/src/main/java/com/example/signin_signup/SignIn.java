@@ -20,7 +20,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class SignIn extends AppCompatActivity {
 
     private TextView gofirst;
-    private EditText si_name,si_email,si_password;
+    private EditText si_name, si_email, si_password;
     private Button si;
     private FirebaseAuth firebaseAuth;
 
@@ -29,40 +29,34 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        si_name=(EditText)findViewById(R.id.si_name);
-        si_email=(EditText)findViewById(R.id.si_email);
-        si_password=(EditText)findViewById(R.id.si_password);
-        gofirst=(TextView)findViewById(R.id.backmain);
-        si=(Button)findViewById(R.id.sign_in);
+        si_name = (EditText) findViewById(R.id.si_name);
+        si_email = (EditText) findViewById(R.id.si_email);
+        si_password = (EditText) findViewById(R.id.si_password);
+        gofirst = (TextView) findViewById(R.id.backmain);
+        si = (Button) findViewById(R.id.sign_in);
 
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        FirebaseUser user= firebaseAuth.getCurrentUser();
+        firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = firebaseAuth.getCurrentUser();
 
-        if (user != null){
-            //Intent moveToHome = new Intent(getApplicationContext(),SignUp.class);
-            //moveToHome.putExtra("User", user);
-            //Toast.makeText(getApplicationContext(), "Successfully Login", Toast.LENGTH_SHORT).show();
-            //startActivity(moveToHome);
-           // finish();
-        }else
 
-            si.setOnClickListener(new View.OnClickListener() {
+        si.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String name = si_name.getText().toString().trim();
                 String email = si_email.getText().toString().trim();
                 String password = si_password.getText().toString().trim();
-                firebaseAuth.signInWithEmailAndPassword(email,password)
+                firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                if(task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(), "Sign In successfully", Toast.LENGTH_SHORT).show();
-                                    Intent moveHomepage = new Intent(SignIn.this,SignIn.class);
+                                    Intent moveHomepage = new Intent(SignIn.this, SignUp.class);
                                     startActivity(moveHomepage);
-                                }else{
-                                    Toast.makeText(getApplicationContext(),"Sign In Failed",Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Sign In Failed", Toast.LENGTH_SHORT).show();
                                 }
 
                             }
@@ -72,15 +66,12 @@ public class SignIn extends AppCompatActivity {
         });
 
         gofirst.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        openMain();
-                    }
-        });
-    }
-
-            public void openMain() {
-                Intent intent = new Intent(this, MainActivity.class);
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
+        });
+
+    }
 }
